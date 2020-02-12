@@ -2,11 +2,11 @@
   .side_bar__header
     .side_bar__header__box
       .side_bar__header__box__name
-        aa
+        = current_user.name
       .side_bar__header__box__icon
         =link_to"#", class: "side_bar__btn" do
           =icon('far', 'edit')
-        =link_to"#", class: "side_bar__btn" do
+        =link_to edit_user_path(current_user) do
           =icon('fas', 'cog')
   .side_bar__groups
     .side_bar__groups__box
