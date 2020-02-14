@@ -1,0 +1,24 @@
+.main_chat
+  .main_chat__group-info
+    .main_chat__group-info__left-box
+      .main_chat__group-info__left-box__current-group
+        = @group.name
+      .main_chat__group-info__left-box__member-list
+        Member:
+        .main_chat__group-info__left-box__member-list__member
+          - @group.users.each do |user|
+            = user.name
+    .main_chat__group-info__edit
+      =link_to edit_group_path(@group) do
+        ="Edit"
+  .main_chat__messages
+    = render @messages
+  
+  .form
+    = form_for [@group, @message] do |f|
+      .input-box
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        = f.label :image, class: 'input-box__image' do
+          = icon('fas', 'image', class: 'icon')
+          = f.file_field :image, class: 'input-box__image__file'
+      = f.submit '送信', class: 'submit-btn'
